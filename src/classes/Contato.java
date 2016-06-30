@@ -65,7 +65,20 @@ public class Contato {
             c++;
         }
     }
-    static Contato[] contatos = new Contato[10];
+    
+    public Contato listarPorId(int id){
+        Contato contato = new Contato();
+        contato = null;
+        for (int i =0; i < contatos.length; i++) {
+            if(id == i){
+                contato = contatos[i];
+                break;
+            }
+        }
+        return contato;
+    }
+     
+    private static Contato[] contatos = new Contato[10];
    
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -93,6 +106,14 @@ public class Contato {
                 case 2 :
                     contato.listarTudo();
                     break;
+                case 3 :
+                    System.out.print("Digite o Id: ");
+                    contato = contato.listarPorId(sc.nextInt());
+                    if (contato == null){
+                        System.out.println("Contato não encontrado");
+                    }else {
+                        System.out.println(contato.toString());
+                    }
                 default:
                     break;
             }
